@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Player Leaderboards - add and manage players and scores">
+    <title>Player Leaderboards</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Minimal default styles in case style.css is missing */
+    </style>
+</head>
+
+<body>
+    <h1>Player Leaderboards</h1>
+
+    <form id="playerForm" novalidate>
+        <div>
+            <label for="firstName">Name</label>
+            <input id="firstName" name="firstName" type="text" required autocomplete="given-name"
+                placeholder="Örn: Ahmet">
+            <div class="required-msg" data-for="firstName"></div>
+        </div>
+
+        <div>
+            <label for="lastName">LastName</label>
+            <input id="lastName" name="lastName" type="text" required autocomplete="family-name"
+                placeholder="Örn: Bozkurt">
+            <div class="required-msg" data-for="lastName"></div>
+        </div>
+
+        <div>
+            <label for="country">Country</label>
+            <input id="country" name="country" type="text" required placeholder="Örn: Türkiye">
+            <div class="required-msg" data-for="country"></div>
+        </div>
+
+        <div>
+            <label for="score">Score</label>
+            <input id="score" name="score" type="number" required min="0" step="1" value="0" placeholder="Örn: 80">
+            <div class="required-msg" data-for="score"></div>
+        </div>
+
+        <div>
+            <button id="addPlayer" type="submit">Add Player</button>
+        </div>
+    </form>
+
+    <section id="players" aria-live="polite"></section>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Inline behavior (also loads external scripts.js if present)
+    </script>
+</body>
+
+</html>

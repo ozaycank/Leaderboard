@@ -1,0 +1,197 @@
+/* 1. Box Model ve Genel Ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Padding ve border'ın genişliği etkilemesini engeller (Çok Önemli!) */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0d6efd;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 2. Form Tasarımı (Inputların üst üste binmesini önler) */
+form {
+    display: grid;
+    /* Grid yapısını esnek yaptık. Ekran daralınca buton alta iner. */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    align-items: start;
+    /* Hata mesajları için hizalamayı yukarıdan başlattık */
+}
+
+/* Form içindeki her bir giriş grubunu kapsayan div */
+form>div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+input {
+    padding: 10px 14px;
+    border: 2px solid #e0e0e0;
+    /* Daha belirgin kenarlık */
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    /* Tıklanınca mavi yanar */
+}
+
+/* Hata mesajı alanı için yer ayırıyoruz */
+.required-msg {
+    color: #dc3545;
+    font-size: 11px;
+    font-weight: 500;
+    min-height: 18px;
+    /* Mesaj yokken de yer kaplar, böylece tasarım zıplamaz */
+    margin-top: 4px;
+}
+
+/* Ana "Ekle" butonu */
+#addPlayer {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    margin-top: 22px;
+    /* Label hizasına gelmesi için */
+    border-radius: 8px;
+    transition: transform 0.2s, background 0.3s;
+}
+
+#addPlayer:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-2px);
+}
+
+/* 3. Oyuncu Listesi (Card Tasarımı) */
+#players {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.player {
+    background: white;
+    padding: 16px 24px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    border-left: 5px solid #0d6efd;
+    /* Şık bir sol çizgi */
+    transition: transform 0.2s;
+}
+
+.player:hover {
+    transform: scale(1.01);
+}
+
+/* Oyuncu Bilgileri */
+.player-info {
+    display: flex;
+    flex-direction: column;
+    /* İsim üstte, ülke altta */
+    gap: 4px;
+}
+
+.player-name {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.player-meta {
+    font-size: 12px;
+    color: #777;
+    text-transform: uppercase;
+}
+
+/* Skor ve Buton Alanı */
+.player-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.player-score {
+    font-size: 20px;
+    font-weight: 800;
+    margin-right: 10px;
+    color: #0d6efd;
+    min-width: 40px;
+    text-align: center;
+}
+
+.small-btn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    /* Yuvarlak butonlar */
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn-plus:hover {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-color: #2e7d32;
+}
+
+.btn-minus:hover {
+    background: #fff3e0;
+    color: #ef6c00;
+    border-color: #ef6c00;
+}
+
+.btn-delete:hover {
+    background: #ffebee;
+    color: #c62828;
+    border-color: #c62828;
+}
+
+/* Mobilde butonların sığması için */
+@media (max-width: 600px) {
+    .player {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
